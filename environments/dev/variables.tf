@@ -14,12 +14,12 @@ variable "vpc_cidr" {
   type        = string
 }
 
-variable "ecr_repo_name" {
-  description = "Name of the container registry repository"
-  type        = string
-}
-
 variable "eks_cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
+}
+
+variable "repos" {
+  type        = list(string)
+  description = "List of repository names"
 }

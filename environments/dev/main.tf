@@ -8,8 +8,9 @@ module "vpc" {
 # 2. ECR Module
 module "ecr" {
   source      = "../../modules/ecr"
+  for_each = toset(var.repos)
   environment = var.environment      
-  repo_name   = var.ecr_repo_name
+  repo_name   = each.value 
 }
 
 # 3. EKS Module
