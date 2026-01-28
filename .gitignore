@@ -1,0 +1,3 @@
+digest.txt
+**/.terraform/
+.terraform.lock.hcl

@@ -1,0 +1,5 @@
+aws_region       = "ap-south-1"
+environment      = "dev"
+vpc_cidr         = "10.0.0.0/16"
+ecr_repo_name    = "dev-ecr-repo"
+eks_cluster_name = "dev-cluster"
