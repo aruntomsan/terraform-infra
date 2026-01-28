@@ -7,7 +7,7 @@ variable "subnet_ids" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 21.15.0" # Use a specific version
+  version = "~> 21.15.0"
 
   name    = "${var.environment}-${var.cluster_name}"
   kubernetes_version = "1.35"
@@ -16,7 +16,7 @@ module "eks" {
 
   vpc_id     = var.vpc_id
   subnet_ids = var.subnet_ids
-  
+
   addons = {
     vpc-cni = {
       before_compute = true
@@ -25,7 +25,7 @@ module "eks" {
     coredns    = {}
     eks-pod-identity-agent = {}
   }
-  # EKS Managed Node Group
+
   eks_managed_node_groups = {
     general = {
       min_size     = 1

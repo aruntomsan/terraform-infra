@@ -10,13 +10,13 @@ module "vpc" {
   name = "${var.environment}-eks-vpc"
   cidr = var.vpc_cidr
 
-  # Dynamically calculate subnets based on the CIDR provided
+
   azs             = slice(data.aws_availability_zones.available.names, 0, 2)
   private_subnets = [cidrsubnet(var.vpc_cidr, 8, 1), cidrsubnet(var.vpc_cidr, 8, 2)]
   public_subnets  = [cidrsubnet(var.vpc_cidr, 8, 101), cidrsubnet(var.vpc_cidr, 8, 102)]
 
   enable_nat_gateway = true
-  single_nat_gateway = true # Keep true for Dev to save cost
+  single_nat_gateway = true 
   enable_vpn_gateway = false
 
   enable_dns_hostnames = true
@@ -31,7 +31,6 @@ module "vpc" {
   }
 }
 
-# --- OUTPUTS ARE REQUIRED FOR EKS MODULE ---
 output "vpc_id" {
   value = module.vpc.vpc_id
 }
